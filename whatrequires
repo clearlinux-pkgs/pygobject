@@ -1,13 +1,15 @@
 # This file contains recursive sources that require this package
 NetworkManager
 blivet
-compat-libhandy-0.0
 dnf
 firewalld
 fwupd
+gexiv2
 gnome-music
 gnome-tweaks
+ibus-typing-booster
 libgit2-glib
+libgweather
 libhandy
 libmodulemd
 libratbag
@@ -17,5 +19,4 @@ meld
 orca
 redshift
 rhythmbox
-virt-manager
 xpra
