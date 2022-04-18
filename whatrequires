@@ -1,16 +1,15 @@
 # This file contains recursive sources that require this package
 NetworkManager
-blivet
-dnf
-firewalld
 fwupd
 gexiv2
-gnome-music
-gnome-tweaks
+gnome-settings-daemon
+gtk4
 ibus-typing-booster
 libgit2-glib
 libgweather
+libgweather4
 libhandy
+libical
 libmodulemd
 libratbag
 libsecret
@@ -19,4 +18,5 @@ meld
 orca
 redshift
 rhythmbox
-xpra
+tracker
+tracker-miners
