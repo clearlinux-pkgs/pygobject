@@ -4,7 +4,7 @@
 #
 Name     : pygobject
 Version  : 3.42.2
-Release  : 65
+Release  : 66
 URL      : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1658165421
+export SOURCE_DATE_EPOCH=1659635691
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -86,8 +86,8 @@ ninja -v -C builddir
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/pygobject
-cp %{_builddir}/pygobject-3.42.2/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d
-cp %{_builddir}/pygobject-3.42.2/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418
+cp %{_builddir}/pygobject-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d
+cp %{_builddir}/pygobject-%{version}/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418
 DESTDIR=%{buildroot} ninja -C builddir install
 
 %files
