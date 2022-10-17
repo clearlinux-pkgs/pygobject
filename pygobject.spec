@@ -4,7 +4,7 @@
 #
 Name     : pygobject
 Version  : 3.42.2
-Release  : 70
+Release  : 73
 URL      : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -35,6 +35,14 @@ Requires: pygobject = %{version}-%{release}
 
 %description dev
 dev components for the pygobject package.
+
+
+%package extras
+Summary: extras components for the pygobject package.
+Group: Default
+
+%description extras
+extras components for the pygobject package.
 
 
 %package license
@@ -72,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664161900
+export SOURCE_DATE_EPOCH=1666028973
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -86,8 +94,8 @@ ninja -v -C builddir
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/pygobject
-cp %{_builddir}/pygobject-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d || :
-cp %{_builddir}/pygobject-%{version}/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418 || :
+cp %{_builddir}/pygobject-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d
+cp %{_builddir}/pygobject-%{version}/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418
 DESTDIR=%{buildroot} ninja -C builddir install
 
 %files
@@ -97,6 +105,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %defattr(-,root,root,-)
 /usr/include/pygobject-3.0/pygobject.h
 /usr/lib64/pkgconfig/pygobject-3.0.pc
+
+%files extras
+%defattr(-,root,root,-)
+/usr/lib/python3.10/site-packages/gi/_gi_cairo.cpython-310-x86_64-linux-gnu.so
 
 %files license
 %defattr(0644,root,root,0755)
@@ -108,4 +120,59 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files python3
 %defattr(-,root,root,-)
-/usr/lib/python3*/*
+/usr/lib/python3.10/site-packages/PyGObject-3.42.2.egg-info
+/usr/lib/python3.10/site-packages/gi/__init__.py
+/usr/lib/python3.10/site-packages/gi/__pycache__/__init__.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_constants.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_error.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_gtktemplate.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_option.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_ossighelper.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_propertyhelper.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/_signalhelper.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/docstring.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/importer.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/module.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/pygtkcompat.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/__pycache__/types.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/_constants.py
+/usr/lib/python3.10/site-packages/gi/_error.py
+/usr/lib/python3.10/site-packages/gi/_gi.cpython-310-x86_64-linux-gnu.so
+/usr/lib/python3.10/site-packages/gi/_gtktemplate.py
+/usr/lib/python3.10/site-packages/gi/_option.py
+/usr/lib/python3.10/site-packages/gi/_ossighelper.py
+/usr/lib/python3.10/site-packages/gi/_propertyhelper.py
+/usr/lib/python3.10/site-packages/gi/_signalhelper.py
+/usr/lib/python3.10/site-packages/gi/docstring.py
+/usr/lib/python3.10/site-packages/gi/importer.py
+/usr/lib/python3.10/site-packages/gi/module.py
+/usr/lib/python3.10/site-packages/gi/overrides/GIMarshallingTests.py
+/usr/lib/python3.10/site-packages/gi/overrides/GLib.py
+/usr/lib/python3.10/site-packages/gi/overrides/GObject.py
+/usr/lib/python3.10/site-packages/gi/overrides/Gdk.py
+/usr/lib/python3.10/site-packages/gi/overrides/GdkPixbuf.py
+/usr/lib/python3.10/site-packages/gi/overrides/Gio.py
+/usr/lib/python3.10/site-packages/gi/overrides/Gtk.py
+/usr/lib/python3.10/site-packages/gi/overrides/Pango.py
+/usr/lib/python3.10/site-packages/gi/overrides/__init__.py
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/GIMarshallingTests.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/GLib.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/GObject.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/Gdk.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/GdkPixbuf.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/Gio.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/Gtk.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/Pango.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/__init__.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/__pycache__/keysyms.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/overrides/keysyms.py
+/usr/lib/python3.10/site-packages/gi/pygtkcompat.py
+/usr/lib/python3.10/site-packages/gi/repository/__init__.py
+/usr/lib/python3.10/site-packages/gi/repository/__pycache__/__init__.cpython-310.pyc
+/usr/lib/python3.10/site-packages/gi/types.py
+/usr/lib/python3.10/site-packages/pygtkcompat/__init__.py
+/usr/lib/python3.10/site-packages/pygtkcompat/__pycache__/__init__.cpython-310.pyc
+/usr/lib/python3.10/site-packages/pygtkcompat/__pycache__/generictreemodel.cpython-310.pyc
+/usr/lib/python3.10/site-packages/pygtkcompat/__pycache__/pygtkcompat.cpython-310.pyc
+/usr/lib/python3.10/site-packages/pygtkcompat/generictreemodel.py
+/usr/lib/python3.10/site-packages/pygtkcompat/pygtkcompat.py
