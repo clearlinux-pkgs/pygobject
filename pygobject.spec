@@ -4,7 +4,7 @@
 #
 Name     : pygobject
 Version  : 3.42.2
-Release  : 78
+Release  : 79
 URL      : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -80,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666717508
+export SOURCE_DATE_EPOCH=1666717717
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -127,4 +127,59 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files python3
 %defattr(-,root,root,-)
-/usr/lib/python3*/*
+/usr/lib/python3.11/site-packages/PyGObject-3.42.2.egg-info
+/usr/lib/python3.11/site-packages/gi/__init__.py
+/usr/lib/python3.11/site-packages/gi/__pycache__/__init__.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_constants.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_error.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_gtktemplate.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_option.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_ossighelper.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_propertyhelper.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/_signalhelper.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/docstring.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/importer.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/module.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/pygtkcompat.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/__pycache__/types.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/_constants.py
+/usr/lib/python3.11/site-packages/gi/_error.py
+/usr/lib/python3.11/site-packages/gi/_gi.cpython-311-x86_64-linux-gnu.so
+/usr/lib/python3.11/site-packages/gi/_gtktemplate.py
+/usr/lib/python3.11/site-packages/gi/_option.py
+/usr/lib/python3.11/site-packages/gi/_ossighelper.py
+/usr/lib/python3.11/site-packages/gi/_propertyhelper.py
+/usr/lib/python3.11/site-packages/gi/_signalhelper.py
+/usr/lib/python3.11/site-packages/gi/docstring.py
+/usr/lib/python3.11/site-packages/gi/importer.py
+/usr/lib/python3.11/site-packages/gi/module.py
+/usr/lib/python3.11/site-packages/gi/overrides/GIMarshallingTests.py
+/usr/lib/python3.11/site-packages/gi/overrides/GLib.py
+/usr/lib/python3.11/site-packages/gi/overrides/GObject.py
+/usr/lib/python3.11/site-packages/gi/overrides/Gdk.py
+/usr/lib/python3.11/site-packages/gi/overrides/GdkPixbuf.py
+/usr/lib/python3.11/site-packages/gi/overrides/Gio.py
+/usr/lib/python3.11/site-packages/gi/overrides/Gtk.py
+/usr/lib/python3.11/site-packages/gi/overrides/Pango.py
+/usr/lib/python3.11/site-packages/gi/overrides/__init__.py
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GIMarshallingTests.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GLib.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GObject.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gdk.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GdkPixbuf.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gio.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gtk.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Pango.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/__init__.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/keysyms.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/overrides/keysyms.py
+/usr/lib/python3.11/site-packages/gi/pygtkcompat.py
+/usr/lib/python3.11/site-packages/gi/repository/__init__.py
+/usr/lib/python3.11/site-packages/gi/repository/__pycache__/__init__.cpython-311.pyc
+/usr/lib/python3.11/site-packages/gi/types.py
+/usr/lib/python3.11/site-packages/pygtkcompat/__init__.py
+/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/__init__.cpython-311.pyc
+/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/generictreemodel.cpython-311.pyc
+/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/pygtkcompat.cpython-311.pyc
+/usr/lib/python3.11/site-packages/pygtkcompat/generictreemodel.py
+/usr/lib/python3.11/site-packages/pygtkcompat/pygtkcompat.py
