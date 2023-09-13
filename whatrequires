@@ -2,7 +2,6 @@
 NetworkManager
 fwupd
 gexiv2
-gnome-settings-daemon
 gtk4
 ibus-typing-booster
 libgit2-glib
@@ -17,4 +16,3 @@ orca
 redshift
 rhythmbox
 tracker
-tracker-miners

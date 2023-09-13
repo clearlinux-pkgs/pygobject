@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pygobject
-Version  : 3.44.1
-Release  : 81
-URL      : https://download.gnome.org/sources/pygobject/3.44/pygobject-3.44.1.tar.xz
-Source0  : https://download.gnome.org/sources/pygobject/3.44/pygobject-3.44.1.tar.xz
+Version  : 3.46.0
+Release  : 82
+URL      : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
+Source0  : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Summary  : Python bindings for GObject Introspection
 Group    : Development/Tools
 License  : CC-BY-SA-3.0 LGPL-2.1
@@ -73,25 +73,30 @@ python3 components for the pygobject package.
 
 
 %prep
-%setup -q -n pygobject-3.44.1
-cd %{_builddir}/pygobject-3.44.1
+%setup -q -n pygobject-3.46.0
+cd %{_builddir}/pygobject-3.46.0
+pushd ..
+cp -a pygobject-3.46.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680041872
+export SOURCE_DATE_EPOCH=1694632742
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dtests=false  builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dtests=false  builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
@@ -104,7 +109,9 @@ meson test -C builddir --print-errorlogs
 mkdir -p %{buildroot}/usr/share/package-licenses/pygobject
 cp %{_builddir}/pygobject-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d || :
 cp %{_builddir}/pygobject-%{version}/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418 || :
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -116,6 +123,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files extras
 %defattr(-,root,root,-)
+/V3/usr/lib/python3.11/site-packages/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so
 /usr/lib/python3.11/site-packages/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so
 
 %files license
@@ -128,7 +136,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files python3
 %defattr(-,root,root,-)
-/usr/lib/python3.11/site-packages/PyGObject-3.44.1.egg-info
+/V3/usr/lib/python3.11/site-packages/gi/_gi.cpython-311-x86_64-linux-gnu.so
+/usr/lib/python3.11/site-packages/PyGObject-3.46.0.egg-info
 /usr/lib/python3.11/site-packages/gi/__init__.py
 /usr/lib/python3.11/site-packages/gi/__pycache__/__init__.cpython-311.pyc
 /usr/lib/python3.11/site-packages/gi/__pycache__/_constants.cpython-311.pyc
