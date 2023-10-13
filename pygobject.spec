@@ -5,7 +5,7 @@
 #
 Name     : pygobject
 Version  : 3.46.0
-Release  : 83
+Release  : 84
 URL      : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -76,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1697225764
+export SOURCE_DATE_EPOCH=1697227865
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
