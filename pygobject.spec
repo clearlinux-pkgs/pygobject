@@ -5,7 +5,7 @@
 #
 Name     : pygobject
 Version  : 3.46.0
-Release  : 84
+Release  : 85
 URL      : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -36,6 +36,14 @@ Requires: pygobject = %{version}-%{release}
 
 %description dev
 dev components for the pygobject package.
+
+
+%package extras
+Summary: extras components for the pygobject package.
+Group: Default
+
+%description extras
+extras components for the pygobject package.
 
 
 %package license
@@ -76,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1697227865
+export SOURCE_DATE_EPOCH=1697229485
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -133,6 +141,11 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/pygobject-3.0/pygobject.h
 /usr/lib64/pkgconfig/pygobject-3.0.pc
 
+%files extras
+%defattr(-,root,root,-)
+/V3/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
+/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
+
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418
@@ -144,7 +157,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files python3
 %defattr(-,root,root,-)
 /V3/usr/lib/python3.12/site-packages/gi/_gi.cpython-312-x86_64-linux-gnu.so
-/V3/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
 /usr/lib/python3.12/site-packages/PyGObject-3.46.0.egg-info
 /usr/lib/python3.12/site-packages/gi/__init__.py
 /usr/lib/python3.12/site-packages/gi/__pycache__/__init__.cpython-312.pyc
@@ -163,7 +175,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib/python3.12/site-packages/gi/_constants.py
 /usr/lib/python3.12/site-packages/gi/_error.py
 /usr/lib/python3.12/site-packages/gi/_gi.cpython-312-x86_64-linux-gnu.so
-/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
 /usr/lib/python3.12/site-packages/gi/_gtktemplate.py
 /usr/lib/python3.12/site-packages/gi/_option.py
 /usr/lib/python3.12/site-packages/gi/_ossighelper.py
