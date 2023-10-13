@@ -5,7 +5,7 @@
 #
 Name     : pygobject
 Version  : 3.46.0
-Release  : 82
+Release  : 83
 URL      : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/3.46/pygobject-3.46.0.tar.xz
 Summary  : Python bindings for GObject Introspection
@@ -36,14 +36,6 @@ Requires: pygobject = %{version}-%{release}
 
 %description dev
 dev components for the pygobject package.
-
-
-%package extras
-Summary: extras components for the pygobject package.
-Group: Default
-
-%description extras
-extras components for the pygobject package.
 
 
 %package license
@@ -84,16 +76,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1694632742
+export SOURCE_DATE_EPOCH=1697225764
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dtests=false  builddir
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
+meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dtests=false  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dtests=false  builddiravx2
 ninja -v -C builddiravx2
@@ -106,6 +104,20 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 meson test -C builddir --print-errorlogs
 
 %install
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 mkdir -p %{buildroot}/usr/share/package-licenses/pygobject
 cp %{_builddir}/pygobject-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pygobject/597bf5f9c0904bd6c48ac3a3527685818d11246d || :
 cp %{_builddir}/pygobject-%{version}/docs/images/LICENSE %{buildroot}/usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418 || :
@@ -121,11 +133,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/pygobject-3.0/pygobject.h
 /usr/lib64/pkgconfig/pygobject-3.0.pc
 
-%files extras
-%defattr(-,root,root,-)
-/V3/usr/lib/python3.11/site-packages/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so
-/usr/lib/python3.11/site-packages/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so
-
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pygobject/37e8ad1b8f297bce2b0974196aa6998cc7f8e418
@@ -136,60 +143,62 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files python3
 %defattr(-,root,root,-)
-/V3/usr/lib/python3.11/site-packages/gi/_gi.cpython-311-x86_64-linux-gnu.so
-/usr/lib/python3.11/site-packages/PyGObject-3.46.0.egg-info
-/usr/lib/python3.11/site-packages/gi/__init__.py
-/usr/lib/python3.11/site-packages/gi/__pycache__/__init__.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_constants.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_error.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_gtktemplate.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_option.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_ossighelper.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_propertyhelper.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/_signalhelper.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/docstring.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/importer.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/module.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/pygtkcompat.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/__pycache__/types.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/_constants.py
-/usr/lib/python3.11/site-packages/gi/_error.py
-/usr/lib/python3.11/site-packages/gi/_gi.cpython-311-x86_64-linux-gnu.so
-/usr/lib/python3.11/site-packages/gi/_gtktemplate.py
-/usr/lib/python3.11/site-packages/gi/_option.py
-/usr/lib/python3.11/site-packages/gi/_ossighelper.py
-/usr/lib/python3.11/site-packages/gi/_propertyhelper.py
-/usr/lib/python3.11/site-packages/gi/_signalhelper.py
-/usr/lib/python3.11/site-packages/gi/docstring.py
-/usr/lib/python3.11/site-packages/gi/importer.py
-/usr/lib/python3.11/site-packages/gi/module.py
-/usr/lib/python3.11/site-packages/gi/overrides/GIMarshallingTests.py
-/usr/lib/python3.11/site-packages/gi/overrides/GLib.py
-/usr/lib/python3.11/site-packages/gi/overrides/GObject.py
-/usr/lib/python3.11/site-packages/gi/overrides/Gdk.py
-/usr/lib/python3.11/site-packages/gi/overrides/GdkPixbuf.py
-/usr/lib/python3.11/site-packages/gi/overrides/Gio.py
-/usr/lib/python3.11/site-packages/gi/overrides/Gtk.py
-/usr/lib/python3.11/site-packages/gi/overrides/Pango.py
-/usr/lib/python3.11/site-packages/gi/overrides/__init__.py
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GIMarshallingTests.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GLib.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GObject.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gdk.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/GdkPixbuf.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gio.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Gtk.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/Pango.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/__init__.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/__pycache__/keysyms.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/overrides/keysyms.py
-/usr/lib/python3.11/site-packages/gi/pygtkcompat.py
-/usr/lib/python3.11/site-packages/gi/repository/__init__.py
-/usr/lib/python3.11/site-packages/gi/repository/__pycache__/__init__.cpython-311.pyc
-/usr/lib/python3.11/site-packages/gi/types.py
-/usr/lib/python3.11/site-packages/pygtkcompat/__init__.py
-/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/__init__.cpython-311.pyc
-/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/generictreemodel.cpython-311.pyc
-/usr/lib/python3.11/site-packages/pygtkcompat/__pycache__/pygtkcompat.cpython-311.pyc
-/usr/lib/python3.11/site-packages/pygtkcompat/generictreemodel.py
-/usr/lib/python3.11/site-packages/pygtkcompat/pygtkcompat.py
+/V3/usr/lib/python3.12/site-packages/gi/_gi.cpython-312-x86_64-linux-gnu.so
+/V3/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
+/usr/lib/python3.12/site-packages/PyGObject-3.46.0.egg-info
+/usr/lib/python3.12/site-packages/gi/__init__.py
+/usr/lib/python3.12/site-packages/gi/__pycache__/__init__.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_constants.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_error.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_gtktemplate.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_option.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_ossighelper.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_propertyhelper.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/_signalhelper.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/docstring.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/importer.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/module.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/pygtkcompat.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/__pycache__/types.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/_constants.py
+/usr/lib/python3.12/site-packages/gi/_error.py
+/usr/lib/python3.12/site-packages/gi/_gi.cpython-312-x86_64-linux-gnu.so
+/usr/lib/python3.12/site-packages/gi/_gi_cairo.cpython-312-x86_64-linux-gnu.so
+/usr/lib/python3.12/site-packages/gi/_gtktemplate.py
+/usr/lib/python3.12/site-packages/gi/_option.py
+/usr/lib/python3.12/site-packages/gi/_ossighelper.py
+/usr/lib/python3.12/site-packages/gi/_propertyhelper.py
+/usr/lib/python3.12/site-packages/gi/_signalhelper.py
+/usr/lib/python3.12/site-packages/gi/docstring.py
+/usr/lib/python3.12/site-packages/gi/importer.py
+/usr/lib/python3.12/site-packages/gi/module.py
+/usr/lib/python3.12/site-packages/gi/overrides/GIMarshallingTests.py
+/usr/lib/python3.12/site-packages/gi/overrides/GLib.py
+/usr/lib/python3.12/site-packages/gi/overrides/GObject.py
+/usr/lib/python3.12/site-packages/gi/overrides/Gdk.py
+/usr/lib/python3.12/site-packages/gi/overrides/GdkPixbuf.py
+/usr/lib/python3.12/site-packages/gi/overrides/Gio.py
+/usr/lib/python3.12/site-packages/gi/overrides/Gtk.py
+/usr/lib/python3.12/site-packages/gi/overrides/Pango.py
+/usr/lib/python3.12/site-packages/gi/overrides/__init__.py
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/GIMarshallingTests.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/GLib.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/GObject.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/Gdk.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/GdkPixbuf.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/Gio.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/Gtk.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/Pango.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/__init__.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/__pycache__/keysyms.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/overrides/keysyms.py
+/usr/lib/python3.12/site-packages/gi/pygtkcompat.py
+/usr/lib/python3.12/site-packages/gi/repository/__init__.py
+/usr/lib/python3.12/site-packages/gi/repository/__pycache__/__init__.cpython-312.pyc
+/usr/lib/python3.12/site-packages/gi/types.py
+/usr/lib/python3.12/site-packages/pygtkcompat/__init__.py
+/usr/lib/python3.12/site-packages/pygtkcompat/__pycache__/__init__.cpython-312.pyc
+/usr/lib/python3.12/site-packages/pygtkcompat/__pycache__/generictreemodel.cpython-312.pyc
+/usr/lib/python3.12/site-packages/pygtkcompat/__pycache__/pygtkcompat.cpython-312.pyc
+/usr/lib/python3.12/site-packages/pygtkcompat/generictreemodel.py
+/usr/lib/python3.12/site-packages/pygtkcompat/pygtkcompat.py
