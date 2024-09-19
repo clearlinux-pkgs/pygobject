@@ -10,6 +10,7 @@ libhandy
 libmodulemd
 libratbag
 libsecret
+libvirt-dbus
 lutris
 orca
 rhythmbox
