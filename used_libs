@@ -1,5 +1,5 @@
 libc.so.6
 libffi.so.8
-libgirepository-1.0.so.1
+libgirepository-2.0.so.0
 libglib-2.0.so.0
 libgobject-2.0.so.0

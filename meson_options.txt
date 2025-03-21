@@ -1,4 +1,6 @@
-option('python', type : 'string', value : 'python3')
-option('pycairo', type : 'feature', value : 'auto', description : 'build with pycairo integration')
-option('tests', type : 'boolean', value : true, description : 'build unit tests')
-option('wheel', type : 'boolean', value : false, description : 'build for a Python wheel')
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2024 Philip Chimento <philip.chimento@gmail.com>
+
+option('cairo', type: 'boolean', value: true, description: 'Cairo support')
+option('install_dir', type: 'string',
+    description: 'Location to install test libraries and typelibs')
